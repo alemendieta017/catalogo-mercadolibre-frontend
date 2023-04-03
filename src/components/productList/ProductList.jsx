@@ -3,13 +3,14 @@ import { fetchData } from '../../utils/utils'
 import styles from './ProductList.module.css'
 import globals from '../../index.module.css'
 import { Link } from 'react-router-dom'
+import config from '../../config/config'
 
 const ProductList = ({ products, setProducts, query, setQuery }) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await fetchData(`http://localhost:3001/api/items?q=${query}`)
+      const data = await fetchData(`${config.API_URL}/api/items?q=${query}`)
       setProducts(data.items)
       setLoading(false)
     }

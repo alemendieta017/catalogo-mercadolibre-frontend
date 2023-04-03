@@ -3,6 +3,7 @@ import globals from '../../index.module.css'
 import styles from './productItem.module.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import { fetchData } from '../../utils/utils'
+import config from '../../config/config'
 
 const ProductItem = () => {
   let { id } = useParams()
@@ -11,7 +12,7 @@ const ProductItem = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetchData(`http://localhost:3001/api/items/${id}`)
+      const response = await fetchData(`${config.API_URL}/api/items/${id}`)
       setProductInfo(response)
     }
 
